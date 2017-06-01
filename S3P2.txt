@@ -1,0 +1,202 @@
+(defconst wave-one-signal-zero 1)
+(defconst wave-two-signal-one 2)
+(defconst siege-one-signal-ten 3)
+(defconst siege-two-signal-eleven 4)
+(defconst wave-three-signal-two 5)
+(defconst glass-break 6)
+(defconst heavy-knight-wave 7)
+(defconst siege-three-signal-thirteen 8)
+(defconst heavy-knight-wave-two 9)
+
+(defrule
+	(true)
+=>
+	;(set-strategic-number sn-attack-group-size-randomness 0)
+	;(set-strategic-number sn-attack-group-gather-spacing 3)
+	;(set-strategic-number sn-ignore-attack-group-under-attack 1)
+	;(set-strategic-number sn-minimum-attack-group-size 10)
+	;(set-strategic-number sn-maximum-attack-group-size 80)
+	;(set-strategic-number sn-group-form-distance 144)
+	;(set-strategic-number sn-group-commander-selection-method 0)
+	;(set-strategic-number sn-group-leader-defense-distance 3)
+	(set-strategic-number sn-attack-intelligence 1)
+	(set-strategic-number sn-percent-attack-soldiers 100)
+	(set-strategic-number sn-number-attack-groups 0)
+	(set-strategic-number sn-wall-targeting-mode 1)	
+	(set-strategic-number sn-percent-enemy-sighted-response 100)
+	(set-strategic-number sn-enemy-sighted-response-distance 40)
+	(disable-self)
+)
+(defrule
+	(true)
+=>
+	(set-strategic-number sn-target-evaluation-siege-weapon 555)
+	(set-strategic-number sn-target-evaluation-damage-capability 1)
+	(set-strategic-number sn-target-evaluation-in-progress 0)
+	(set-strategic-number sn-target-evaluation-distance 100)
+	(set-strategic-number sn-target-evaluation-hitpoints 0)
+	(set-strategic-number sn-target-evaluation-range 0)
+	(set-strategic-number sn-target-evaluation-rof 0)
+	(set-strategic-number sn-target-evaluation-time-kill-ratio 1)
+	(set-strategic-number sn-target-evaluation-attack-attempts 0)
+	(set-strategic-number sn-target-evaluation-ally-proximity 0)
+	(set-strategic-number sn-target-evaluation-randomness 0)
+	(set-strategic-number sn-target-evaluation-boat 0)
+	(set-strategic-number sn-target-evaluation-continent 0)
+	(set-strategic-number sn-target-evaluation-kills 0)
+	(disable-self)
+)
+
+(defrule	
+	(true)
+=>
+	
+	(set-strategic-number sn-task-ungrouped-soldiers 0)
+	(set-strategic-number sn-blot-exploration-map 0)
+	(set-strategic-number sn-cap-civilian-builders 0)
+	(set-strategic-number sn-number-explore-groups 0)
+	(set-strategic-number sn-minimum-explore-group-size 0)
+	(set-strategic-number sn-maximum-explore-group-size 0)
+	(set-strategic-number sn-intelligent-gathering 0)
+	(set-strategic-number sn-percent-civilian-explorers 0)
+	(set-strategic-number sn-percent-civilian-builders 0)
+	(set-strategic-number sn-percent-civilian-gatherers 0)
+	(disable-self)
+)
+
+(defrule
+(game-time >= 30)
+=>
+(set-goal wave-one-signal-zero 1)
+(chat-to-all "Prepare the vanguard! Destroy that palace!")
+(disable-self)
+)
+
+(defrule
+(goal wave-one-signal-zero 1)
+=>
+(set-signal 0)
+(disable-self)
+)
+
+(defrule
+(game-time >= 900)
+=>
+(set-goal wave-one-signal-zero 0)
+(set-goal wave-two-signal-one 1)
+(chat-to-all "Send in the Havai mercenaries!")
+(disable-self)
+)
+
+(defrule
+(goal wave-two-signal-one 1)
+=>
+(set-signal 1)
+(disable-self)
+)
+
+(defrule
+(game-time >= 200)
+=>
+(set-goal siege-one-signal-ten 1)
+(chat-to-all "Send in the battering rams!")
+(disable-self)
+)
+
+(defrule
+(goal siege-one-signal-ten 1)
+=>
+(set-signal 10)
+(disable-self)
+)
+
+(defrule
+(game-time >= 1800)
+=>
+(set-goal siege-two-signal-eleven 1)
+(chat-to-all "Send in the mongonels!")
+(disable-self)
+)
+
+(defrule
+(goal siege-two-signal-eleven 1)
+=>
+(set-signal 11)
+(disable-self)
+)
+
+(defrule
+(game-time >= 1815)
+=>
+(set-goal wave-two-signal-one 0)
+(set-goal wave-three-signal-two 1)
+(chat-to-all "Send in the samurai!")
+(disable-self)
+)
+
+(defrule
+(goal wave-three-signal-two 1)
+=>
+(set-signal 2)
+(disable-self)
+)
+
+(defrule
+(game-time >= 2400)
+=>
+(set-goal heavy-knight-wave 1)
+(chat-to-all "Send in the heavy cavalry!!")
+(disable-self)
+)
+
+(defrule
+(goal heavy-knight-wave 1)
+=>
+(set-signal 12)
+(disable-self)
+)
+
+(defrule
+(game-time >= 2700)
+=>
+(set-goal siege-three-signal-thirteen 1)
+(chat-to-all "More Mongonels! Break their line!")
+(disable-self)
+)
+
+(defrule
+(goal siege-three-signal-thirteen 1)
+=>
+(set-signal 13)
+(disable-self)
+)
+
+
+(defrule
+(game-time >= 2900)
+=>
+(set-goal heavy-knight-wave-two 1)
+(chat-to-all "Show them the power of yari cavalry! Charge!")
+(disable-self)
+)
+
+(defrule
+(goal heavy-knight-wave-two 1)
+=>
+(set-signal 14)
+(disable-self)
+)
+
+(defrule
+(game-time >= 4800)
+=>
+(set-goal glass-break 1)
+(disable-self)
+)
+
+(defrule
+(goal glass-break 1)
+=>
+(set-signal 20)
+(disable-self)
+)
